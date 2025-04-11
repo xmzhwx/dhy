@@ -1,55 +1,284 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>afx</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: #000;
-      color: #fff;
-      font-family: sans-serif;
-      font-size: 16px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用网站导航</title>
+    <style>
+        /* 默认黑色主题 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            border-bottom: 2px solid #444;
+            transition: background 0.3s;
+        }
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+        
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        .category {
+            flex: 1 2 250px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
+        }
 
-    .container {
-      text-align: center;
-      line-height: 2;
-    }
+        .category:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
-    a {
-      color: white;
-      text-decoration: none;
-    }
+        .category h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        .category a {
+            display: block;
+            color: #b3c7e6;
+            text-decoration: none;
+            margin: 12px 0;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s ease;
+        }
+
+        .category a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        .category a.active {
+            background-color: rgba(255, 255, 255, 0.4);
+            font-weight: bold;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        /* 白色主题 */
+        body.white-mode {
+            background: #fafafa;
+            color: #333;
+        }
+        header.white-mode {
+            background: #ffffff;
+            color: #333;
+        }
+        .category.white-mode {
+            background-color: #ffffff;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .category.white-mode a {
+            color: #333;
+        }
+        footer.white-mode {
+            background: #ffffff;
+            color: #333;
+        }
+
+        /* 蓝色主题 */
+        body.blue-mode {
+            background: #0f4b73;
+            color: #e3f2fd;
+        }
+        header.blue-mode {
+            background: #1976d2;
+            color: #e3f2fd;
+        }
+        .category.blue-mode {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .category a.blue-mode {
+            color: #e3f2fd;
+        }
+        footer.blue-mode {
+            background: #1976d2;
+            color: #e3f2fd;
+        }
+
+        /* 风格切换按钮 */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+        .theme-toggle:hover {
+            background-color: #ff80c4;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div><a href="https://afengxiang.github.io/astro/">Astro</a></div>
-    <div><a href="https://afengxiang.github.io/react/">React</a></div>
-    <div><a href="https://afengxiang.github.io/vue/">Vue</a></div>
-    <div><a href="https://afengxiang.github.io/svelte/">Svelte</a></div>
-    <div><a href="https://afengxiang.github.io/three/">Three</a></div>
-    <div><a href="https://afengxiang.github.io/pixi/">Pixi</a></div>
-    <div><a href="https://afengxiang.github.io/canvas/">Canvas</a></div>
-    <div><a href="https://afengxiang.github.io/webpack/">Webpack</a></div>
-    <div><a href="https://afengxiang.github.io/vite/">Vite</a></div>
-    <div><a href="https://afengxiang.github.io/rollup/">Rollup</a></div>
-    <div><a href="https://afengxiang.github.io/esbuild/">Esbuild</a></div>
-    <div><a href="https://afengxiang.github.io/parcel/">Parcel</a></div>
-  </div>
+<body class="black-mode">
+
+
+<header>
+   <h1>我的导航页</h1>
+   <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="搜索内容..." />
+      <select id="searchEngine">
+        <option value="https://www.baidu.com/s?wd=">百度</option>
+        <option value="https://www.google.com/search?q=">Google</option>
+        <option value="https://www.bing.com/search?q=">Bing</option>
+        <option value="https://www.sogou.com/web?query=">搜狗</option>
+      </select>
+      <button onclick="search()">搜索</button>
+    </div>
+</header>
+<div class="container">
+    <div class="category">
+        <h2>常用网站</h2>
+        <a href="https://www.baidu.com" target="_blank">百度</a>
+        <a href="https://www.google.com" target="_blank">Google</a>
+        <a href="https://www.zhihu.com" target="_blank">知乎</a>
+        <a href="https://www.taobao.com" target="_blank">淘宝</a>
+        <a href="https://www.jd.com" target="_blank">京东</a>
+        <a href="https://www.sina.com.cn" target="_blank">新浪</a>
+        <a href="https://www.qq.com" target="_blank">腾讯</a>
+        <a href="https://www.weibo.com" target="_blank">微博</a>
+        <a href="https://www.douban.com" target="_blank">豆瓣</a>
+        <a href="https://www.bing.com" target="_blank">Bing</a>
+    </div>
+
+    <div class="category">
+        <h2>音乐</h2>
+        <a href="https://www.xiami.com" target="_blank">虾米音乐</a>
+        <a href="https://www.netease.com/cloudmusic" target="_blank">网易云音乐</a>
+        <a href="https://www.kugou.com" target="_blank">酷狗音乐</a>
+        <a href="https://www.qq.com" target="_blank">QQ音乐</a>
+        <a href="https://www.fm1045.com" target="_blank">FM1045</a>
+        <a href="https://www.soundcloud.com" target="_blank">SoundCloud</a>
+        <a href="https://www.spotify.com" target="_blank">Spotify</a>
+        <a href="https://www.apple.com/music" target="_blank">Apple Music</a>
+        <a href="https://www.tidal.com" target="_blank">Tidal</a>
+        <a href="https://www.shazam.com" target="_blank">Shazam</a>
+    </div>
+
+    <div class="category">
+        <h2>视频</h2>
+        <a href="https://www.bilibili.com" target="_blank">哔哩哔哩</a>
+        <a href="https://www.iqiyi.com" target="_blank">爱奇艺</a>
+        <a href="https://www.youku.com" target="_blank">优酷</a>
+        <a href="https://www.youtube.com" target="_blank">YouTube</a>
+        <a href="https://www.netflix.com" target="_blank">Netflix</a>
+        <a href="https://www.vimeo.com" target="_blank">Vimeo</a>
+        <a href="https://www.tudou.com" target="_blank">土豆网</a>
+        <a href="https://www.douyin.com" target="_blank">抖音</a>
+        <a href="https://www.twitch.tv" target="_blank">Twitch</a>
+        <a href="https://www.dailymotion.com" target="_blank">Dailymotion</a>
+    </div>
+
+    <div class="category">
+        <h2>工具</h2>
+        <a href="https://www.csdn.net" target="_blank">CSDN</a>
+        <a href="https://www.stackoverflow.com" target="_blank">Stack Overflow</a>
+        <a href="https://www.w3schools.com" target="_blank">W3Schools</a>
+        <a href="https://www.rapidapi.com" target="_blank">RapidAPI</a>
+        <a href="https://www.figma.com" target="_blank">Figma</a>
+        <a href="https://www.codepen.io" target="_blank">CodePen</a>
+        <a href="https://www.gitlab.com" target="_blank">GitLab</a>
+        <a href="https://www.github.com" target="_blank">GitHub</a>
+        <a href="https://www.stackexchange.com" target="_blank">Stack Exchange</a>
+        <a href="https://www.pandorabots.com" target="_blank">Pandorabots</a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 常用网站导航 | 由 zhwx 创建</p>
+</footer>
+
+<!-- 主题切换按钮 -->
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+<script>
+    function toggleTheme() {
+        let body = document.body;
+        let header = document.querySelector('header');
+        let categories = document.querySelectorAll('.category');
+        let footer = document.querySelector('footer');
+        
+        // 切换主题类
+        if (body.classList.contains('black-mode')) {
+            body.classList.remove('black-mode');
+            body.classList.add('white-mode');
+            header.classList.remove('black-mode');
+            header.classList.add('white-mode');
+            categories.forEach(function(category) {
+                category.classList.remove('black-mode');
+                category.classList.add('white-mode');
+            });
+            footer.classList.remove('black-mode');
+            footer.classList.add('white-mode');
+            document.querySelector('.theme-toggle').innerHTML = "🌞";
+        } else if (body.classList.contains('white-mode')) {
+            body.classList.remove('white-mode');
+            body.classList.add('blue-mode');
+            header.classList.remove('white-mode');
+            header.classList.add('blue-mode');
+            categories.forEach(function(category) {
+                category.classList.remove('white-mode');
+                category.classList.add('blue-mode');
+            });
+            footer.classList.remove('white-mode');
+            footer.classList.add('blue-mode');
+            document.querySelector('.theme-toggle').innerHTML = "🔵";
+        } else {
+            body.classList.remove('blue-mode');
+            body.classList.add('black-mode');
+            header.classList.remove('blue-mode');
+            header.classList.add('black-mode');
+            categories.forEach(function(category) {
+                category.classList.remove('blue-mode');
+                category.classList.add('black-mode');
+            });
+            footer.classList.remove('blue-mode');
+            footer.classList.add('black-mode');
+            document.querySelector('.theme-toggle').innerHTML = "🌙";
+        }
+    }
+</script>
+
 </body>
 </html>
